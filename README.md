@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+# 7guis-react
+=======
+>>>>>>> 74e25ed897cc6a842746e14cd3ba6a6660bf6768
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -66,3 +72,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+<<<<<<< HEAD
+=======
+>>>>>>> Initial commit from Create React App
+>>>>>>> 74e25ed897cc6a842746e14cd3ba6a6660bf6768
