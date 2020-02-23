@@ -1,24 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { actions, reducer, initialState } from "./state";
 
 function App() {
+  const [state, dispatch] = React.useReducer(reducer, initialState);
+  console.log("test");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Choose Flight</h1>
+      <select id="flight">
+        <option>one-way</option>
+        <option>two-way</option>
+      </select>
+      <br />
+      <br />
+      <label>Start Date</label>
+      <br />
+      <input type="date" />
+      <br />
+      <label>End Date</label>
+      <br />
+      <input type="date" />
+      <br />
+      <button type="submit">Submit</button>
     </div>
   );
 }
