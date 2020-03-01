@@ -1,14 +1,13 @@
 export const flightTypes = {
-  ONE_WAY : "one-way",
-  TWO_WAY : "two-way",
-}
+  ONE_WAY: "one-way",
+  TWO_WAY: "two-way"
+};
 
 export let initialState = {
   flightType: flightTypes.ONE_WAY,
   startDate: new Date().toISOString(),
   endDate: new Date().toISOString()
-}
-
+};
 
 const actionTypes = {
   changeFlightType: "CHANGE_FLIGHT_TYPE",
@@ -67,6 +66,7 @@ export const reducer = (state = initialState, action) => {
           endDate: action.payload
         };
       }
+      console.log("endDate");
       return state;
 
     default:
