@@ -5,8 +5,8 @@ export const flightTypes = {
 
 export let initialState = {
   flightType: flightTypes.ONE_WAY,
-  startDate: new Date().toISOString(),
-  endDate: new Date().toISOString()
+  startDate: new Date().toISOString().substring(0, 10),
+  endDate: new Date().toISOString().substring(0, 10)
 };
 
 const actionTypes = {

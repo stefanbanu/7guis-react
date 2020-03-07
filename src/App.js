@@ -5,7 +5,15 @@ import { actions, reducer, initialState, flightTypes } from "./state";
 
 function App() {
   const [state, dispatch] = React.useReducer(reducer, initialState);
-  const dateNotValid = state.startDate > state.endDate;
+
+  let isFormValid;
+
+  if (state.flightType === flightTypes.ONE_WAY) {
+    isFormValid = !!state.startDate;
+  } else {
+    isFormValid =
+      !!state.startDate && !!state.endDate && state.startDate <= state.endDate;
+  }
 
   return (
     <div>
@@ -28,20 +36,38 @@ function App() {
         onChange={event =>
           dispatch(actions.changeStartDate(event.target.value))
         }
+        value={state.startDate}
       />
       <br />
       <label>End Date</label>
       <br />
       <input
-        style={dateNotValid ? { color: "red" } : { color: null }}
+        style={{
+          color: isFormValid ? null : "red"
+        }}
+        value={state.endDate}
         id="endDate"
         type="date"
         disabled={state.flightType === flightTypes.ONE_WAY}
         onChange={event => dispatch(actions.changeEndDate(event.target.value))}
       />
       <br />
-      <button type="submit" disabled={dateNotValid}>
-        Submit
+      <button
+        onClick={() => {
+          if (state.flightType === flightTypes.ONE_WAY) {
+            alert(
+              `You have booked a ${state.flightType} flight on ${state.startDate}`
+            );
+          } else {
+            alert(
+              `You have booked a ${state.flightType} flight from ${state.startDate} to ${state.endDate}`
+            );
+          }
+        }}
+        type="submit"
+        disabled={isFormValid === false}
+      >
+        Book
       </button>
     </div>
   );
