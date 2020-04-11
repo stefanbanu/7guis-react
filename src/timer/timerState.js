@@ -1,54 +1,51 @@
 export let initialState = {
   elapsedTime: 0,
-  duration: 5
+  duration: 5,
 };
 
 const actionTypes = {
   changeElapsedTime: "CHANGE_ELAPSED_TIME",
   changeDuration: "CHANGE_DURATION",
-  resetTime: "RESET_TIME"
+  resetTime: "RESET_TIME",
 };
 
 export const actions = {
-  changeElapsedTime: newElapsedTime => {
-    return {
-      type: actionTypes.changeElapsedTime,
-      payload: newElapsedTime
-    };
+  changeElapsedTime: {
+    type: actionTypes.changeElapsedTime,
   },
-  changeDuration: newDuration => {
+  changeDuration: (newDuration) => {
     return {
       type: actionTypes.changeDuration,
-      payload: newDuration
+      payload: newDuration,
     };
   },
-  resetTime: newTime => {
-    // 0 ?
-    return {
-      type: actionTypes.resetTime,
-      payload: newTime
-    };
-  }
+  resetTime: {
+    type: actionTypes.resetTime,
+    payload: 0,
+  },
 };
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.changeElapsedTime:
-      return {
-        ...state,
-        elapsedTime: action.payload
-      };
+      if (state.elapsedTime < state.duration) {
+        return {
+          ...state,
+          elapsedTime: state.elapsedTime + 0.1,
+        };
+      }
+      return state;
 
     case actionTypes.changeDuration:
       return {
         ...state,
-        duration: action.payload
+        duration: action.payload,
       };
 
     case actionTypes.resetTime:
       return {
         ...state,
-        resetTime: 000// ?
+        resetTime: action.payload,
       };
 
     default:
